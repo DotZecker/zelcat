@@ -53,11 +53,11 @@ $accio       = $_GET['action'];
 // TODO: Añadir otras variables de la url (para pasarlas como parámetro a las acciones)
 require directori('app').'controladors/'.$controlador.'.php';
 
-$name_controller = ucfirst($controlador).'_Controller';
+$name_controller = 'Controlador_' . ucfirst($controlador);
 
 $controller = new $name_controller;
 
-$action = 'action_'.$accio;
+$action = 'accio_'.$accio;
 $vista = $controller->$action();
 extract($vista->dades);
 include($vista->directori);
