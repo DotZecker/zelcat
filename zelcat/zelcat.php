@@ -37,18 +37,18 @@ error_reporting(-1);
 |
 */
 
+require directori('sys').'peticio.php';
 require directori('sys').'vista.php';
 require directori('sys').'basededades.php';
 require directori('sys').'model.php';
 require directori('sys').'controlador.php';
 require directori('sys').'bens.php';
 
-//$conexion = new BaseDeDades;
-//pd($conexion);
+$peticio = new Peticio();
 
 // TODO: Quitar y arreglar esta cutrada
-$controlador = $_GET['controller'];
-$accio       = $_GET['action'];
+$controlador = $peticio->controlador[0];
+$accio       = $peticio->accio;
 
 // TODO: Añadir otras variables de la url (para pasarlas como parámetro a las acciones)
 require directori('app').'controladors/'.$controlador.'.php';
