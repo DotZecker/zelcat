@@ -38,11 +38,14 @@ error_reporting(-1);
 */
 
 require directori('sys').'peticio.php';
+require directori('sys').'ruta.php';
 require directori('sys').'vista.php';
 require directori('sys').'basededades.php';
+class_alias('BaseDeDades', 'BD');
 require directori('sys').'model.php';
 require directori('sys').'controlador.php';
 require directori('sys').'bens.php';
+
 
 $peticio = new Peticio();
 
@@ -61,3 +64,8 @@ $action = 'accio_'.$accio;
 $vista = $controller->$action();
 extract($vista->dades);
 include($vista->directori);
+
+function __autoload($nombre_clase) {
+    // Tendría que tener todos los nombres de las clases mapeadas e incluir la que tocara
+    include directori('app').'models'.'/'.$nombre_clase . '.php';
+}

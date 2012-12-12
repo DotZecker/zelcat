@@ -6,6 +6,8 @@ class Controlador_Usuaris extends Controlador {
 
 	public function accio_entrar()
 	{
+		$usuaris = Usuari::get();
+		pd($usuaris);
 		return Vista::fer($this->plantilla)
 			->amb('titol', 'Login d\'usuari')
 			->amb('contingut', Vista::carrega('usuaris/entra'));

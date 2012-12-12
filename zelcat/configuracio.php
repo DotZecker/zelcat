@@ -9,6 +9,8 @@ class Configuracio {
      */
 	public static function de($que)
 	{
-		return file_get_contents(directori('app').'config/'.$que.'.php');
+        // TODO: Comprovar si el fitxer existeix
+        return require directori('app').'config\\'.$que.'.php';
+
 	}
 }
