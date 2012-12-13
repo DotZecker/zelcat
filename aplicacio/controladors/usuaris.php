@@ -6,6 +6,8 @@ class Controlador_Usuaris extends Controlador {
 
 	public function accio_entrar()
 	{
+		Usuari::delete('sergiohueso15@gmail.com');
+
 		$usuaris = Usuari::get();
 		pd($usuaris);
 		return Vista::fer($this->plantilla)

@@ -18,6 +18,7 @@ class BaseDeDades {
     public static function cru($consulta)
     {
         $connexio = new static();
+        // TODO: Control de errores
         return $connexio->db->query($consulta)->fetchAll(PDO::FETCH_ASSOC);
 
     }
