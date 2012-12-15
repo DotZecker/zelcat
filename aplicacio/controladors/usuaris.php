@@ -20,8 +20,8 @@ class Controlador_Usuaris extends Controlador_Plantilla {
 
 	public function accio_registre()
 	{
-		return Vista::fer($this->plantilla)
-		->amb('titol', 'Registre d\'usuaris')
-		->amb('contingut', Vista::carrega('usuaris/registre'));
+		return $this->plantilla
+			->amb('titol', 'Registre d\'usuaris')
+			->amb('contingut', Vista::carrega('usuaris/registre'));
 	}
 }

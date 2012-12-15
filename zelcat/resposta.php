@@ -11,16 +11,29 @@ class Resposta {
         // TODO: Quitar y arreglar esta cutrada
         $controlador = (isset($peticio->controlador[0])) ? $peticio->controlador[0] : Config::de('aplicacio', 'controlador_per_defecte');
 
-        $accio = (is_null($peticio->accio)) ? $peticio->accio : 'index';
+        $accio = (is_null($peticio->accio)) ? 'index' : $peticio->accio;
 
         // TODO: Añadir otras variables de la url (para pasarlas como parámetro a las acciones)
-        require directori('app').'controladors/'.$controlador.'.php';
+        $directori_controlador = directori('app').'controladors/'.$controlador.'.php';
+
+        if (file_exists($directori_controlador)) {
+            require $directori_controlador;
+        } else {
+            header("HTTP/1.0 404 Not Found");
+            die('404');
+        }
 
         $name_controller = 'Controlador_' . ucfirst($controlador);
         $controller = new $name_controller;
         $controller->abans();
         $action = 'accio_'.$accio;
-        $this->vista = $controller->$action();
+
+        if (method_exists($controller, $action)) {
+            $this->vista = $controller->$action();
+        } else {
+            header("HTTP/1.0 404 Not Found");
+            die('404');
+        }
     }
 
     public static function fer()
