@@ -31,3 +31,4 @@ require directori('sys').'resposta.php';
 |
 */
 class_alias('BaseDeDades', 'BD');
+class_alias('Configuracio', 'Config');

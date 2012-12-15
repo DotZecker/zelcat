@@ -4,6 +4,13 @@ class Controlador_Usuaris extends Controlador_Plantilla {
 
 	public $plantilla = 'plantilla';
 
+	public function accio_index()
+	{
+		return $this->plantilla
+			->amb('titol', 'Llistat d\'usuaris')
+			->amb('contingut', Vista::fer('usuaris/llistar')->amb('usuaris', Usuari::get()));
+	}
+
 	public function accio_entrar()
 	{
 		return $this->plantilla

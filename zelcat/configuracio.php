@@ -7,10 +7,10 @@ class Configuracio {
      * @param  string $que Quina configucarió es vol retornar
      * @return [type]      [description]
      */
-	public static function de($que)
+	public static function de($que, $clau = null)
 	{
-        // TODO: Comprovar si el fitxer existeix
-        return require directori('app').'config\\'.$que.'.php';
+        $configuracio = require directori('app').'config\\'.$que.'.php';
+        return (is_null($clau)) ? $configuracio : $configuracio[$clau];
 
 	}
 }

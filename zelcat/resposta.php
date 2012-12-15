@@ -9,8 +9,9 @@ class Resposta {
         $peticio = new Peticio();
 
         // TODO: Quitar y arreglar esta cutrada
-        $controlador = $peticio->controlador[0];
-        $accio       = $peticio->accio;
+        $controlador = (isset($peticio->controlador[0])) ? $peticio->controlador[0] : Config::de('aplicacio', 'controlador_per_defecte');
+
+        $accio = (is_null($peticio->accio)) ? $peticio->accio : 'index';
 
         // TODO: Añadir otras variables de la url (para pasarlas como parámetro a las acciones)
         require directori('app').'controladors/'.$controlador.'.php';
