@@ -27,7 +27,7 @@ class Peticio {
          */
 
         // Mirem la acció, que es el últim valor de la petició i l'eliminem de tal
-        $accio = end($peticio_actual);
+        $accio = (count($peticio_actual) > 1) ? end($peticio_actual) : 'index';
         unset($peticio_actual[count($peticio_actual)]);
 
         $peticio_actual = array_values($peticio_actual);
