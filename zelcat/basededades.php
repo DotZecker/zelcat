@@ -12,7 +12,6 @@ class BaseDeDades {
 
         // Connectem
         $this->db = new PDO("{$config['driver']}:host={$config['host']};dbname={$config['basededades']};charset={$config['charset']}", $config['usuari'], $config['contrasenya']);
-		//pd($this->configuracio);
 	}
 
     public static function cru($consulta)

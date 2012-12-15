@@ -24,4 +24,9 @@ class Usuari {
 
         return BD::cru($sql);
     }
+
+    public static function edit()
+    {
+
+    }
 }

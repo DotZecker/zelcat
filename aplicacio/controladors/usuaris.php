@@ -1,18 +1,14 @@
 <?php
 
-class Controlador_Usuaris extends Controlador {
+class Controlador_Usuaris extends Controlador_Plantilla {
 
 	public $plantilla = 'plantilla';
 
 	public function accio_entrar()
 	{
-		Usuari::delete('sergiohueso15@gmail.com');
-
-		$usuaris = Usuari::get();
-		pd($usuaris);
-		return Vista::fer($this->plantilla)
+		return $this->plantilla
 			->amb('titol', 'Login d\'usuari')
-			->amb('contingut', Vista::carrega('usuaris/entra'));
+			->amb('contingut', Vista::fer('usuaris/entra')->amb('username', 'Rafael'));
 	}
 
 	public function accio_registre()

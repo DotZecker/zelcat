@@ -2,70 +2,53 @@
 
 /*
 |--------------------------------------------------------------------------
-| Ficheros incluídos
+| Carreguem el Framework
 |--------------------------------------------------------------------------
 |
-| Los archivos que necesitaremos, como la configuración o los helpers
-| Si añadimos por ejemplo un autoloader irái aquí.
+| Amb aquest fitxer carregar el framework podrÃ  ser ussat per el
+| desenvolupador.
 |
  */
-require directori('sys').'configuracio.php';
-require directori('sys').'ajudants.php';
 
+require directori('sys').'nucli.php';
 
 /*
 |--------------------------------------------------------------------------
 | Reportamos todos los errores
 |--------------------------------------------------------------------------
 |
-| Poniendo esto, usemos la verisón que usemos el PHP nos mostrará todos
+| Poniendo esto, usemos la verisÃ³n que usemos el PHP nos mostrarÃ¡ todos
 | los errores.
-| TODO: Si estamos en producción que se quite.
+| TODO: Si estamos en producciÃ³n que se quite.
 |
 */
 
 error_reporting(-1);
+$resposta = Resposta::fer();
 
-/*
-|--------------------------------------------------------------------------
-| Cargamos las vistas modelos y controaldores
-|--------------------------------------------------------------------------
-|
-| TODO: Nos haría falta poner que sólo nos cargara el controlador
-| según la url que nos pasaran.
-| Hacerlo en formato http://url.dev/controlador/accion
-|
-*/
+$resposta->enviar();
 
-require directori('sys').'peticio.php';
-require directori('sys').'ruta.php';
-require directori('sys').'vista.php';
-require directori('sys').'basededades.php';
-class_alias('BaseDeDades', 'BD');
-require directori('sys').'model.php';
-require directori('sys').'controlador.php';
-require directori('sys').'bens.php';
+function __autoload($nom_clase) {
+
+    $fitxer_model = directori('app') . 'models' . '/' . $nom_clase . '.php';
+
+    if ( ! strstr($nom_clase, '_'))
+    {
+        if (file_exists($fitxer_model))
+        {
+            require $fitxer_model;
+        } else {
+            $fitxer_zelcat = directori('sys') . '/' .$nom_clase . '.php';
+            if (file_exists($fitxer_zelcat)) require $fitxer_zelcat;
+        }
+    } else {
+
+        $clase = directori('sys');
+
+        $clase .= strtolower(str_replace('_', DS, $nom_clase)) . '.php';
+        if (file_exists($clase)) require $clase;
+
+    }
 
 
-$peticio = new Peticio();
-
-// TODO: Quitar y arreglar esta cutrada
-$controlador = $peticio->controlador[0];
-$accio       = $peticio->accio;
-
-// TODO: Añadir otras variables de la url (para pasarlas como parámetro a las acciones)
-require directori('app').'controladors/'.$controlador.'.php';
-
-$name_controller = 'Controlador_' . ucfirst($controlador);
-
-$controller = new $name_controller;
-
-$action = 'accio_'.$accio;
-$vista = $controller->$action();
-extract($vista->dades);
-include($vista->directori);
-
-function __autoload($nombre_clase) {
-    // Tendría que tener todos los nombres de las clases mapeadas e incluir la que tocara
-    include directori('app').'models'.'/'.$nombre_clase . '.php';
 }

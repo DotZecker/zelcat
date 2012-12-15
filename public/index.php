@@ -11,7 +11,8 @@
 // --------------------------------------------------------------
 // Li passem les rutes dels directoris
 // --------------------------------------------------------------
-require '../directoris.php';
+define('DS', DIRECTORY_SEPARATOR) or die('Fail!');
+require '..' . DS . 'directoris.php';
 
 // --------------------------------------------------------------
 // Afegim el nucli del nostre sistema!
