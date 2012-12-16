@@ -1,0 +1,17 @@
+*~
+*.bak
+Thumbs.db
+desktop.ini
+.DS_Store
+.buildpath
+.project
+.settings
+*.tmproj
+aplicacio/controladors/*
+aplicacio/models/*
+aplicacio/vistes/*
+public/bens/*
+
+
+nbproject/
+.idea
