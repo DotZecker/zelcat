@@ -10,7 +10,7 @@ class Peticio {
     public function __construct()
     {
         // Obtenim la petició actual
-        $this->peticio    = $_SERVER['REQUEST_URI'];
+        $this->peticio = $_SERVER['REQUEST_URI'];
 
         $this->parametres = array();
 
@@ -19,23 +19,24 @@ class Peticio {
         // posicions inexistentes al array
         $peticio_actual = array_filter(explode('/', $this->peticio));
 
-        /**
-         * TODO: - Si nos pasan sólo el controaldor poner que nos vaya a la acción establecida
-         *       por defecto
-         *
-         *       - Si no nos pasan nada ir al controlador i acción por defecto
-         */
-
         // Mirem la acció, que es el últim valor de la petició i l'eliminem de tal
-        $accio = (count($peticio_actual) > 1) ? end($peticio_actual) : 'index';
-        unset($peticio_actual[count($peticio_actual)]);
+        // A no ser que el count sigui tan sols de 1 ja que si ho es és el nom del
+        // controaldor per defecte
+        if (count($peticio_actual) > 1)
+        {
+            $accio = end($peticio_actual);
+            unset($peticio_actual[count($peticio_actual)]);
+        } else {
+            $accio = 'index';
+        }
 
-        $peticio_actual = array_values($peticio_actual);
+        $controlador = array_values($peticio_actual);
 
         // TODO: Comrpovar que en la $peticio_actual no hi ha cap caracter extrany
-        $this->controlador = $peticio_actual;
+        $this->controlador = $controlador;
 
         // Mirem si ens han passat paràmetres
+        // Està possat amb GET, pasar-ho a comprovar amb sub-controaldors
         if (strstr($accio, '?')) {
             $accio_parametres = explode('?', $accio);
             $this->accio = $accio_parametres[0];

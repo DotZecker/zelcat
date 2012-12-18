@@ -6,5 +6,5 @@ return array(
     'basededades' => 'universita',
     'usuari'      => 'root',
     'contrasenya' => 'root',
-    'charset'     => 'UTF-8',
+    'charset'     => 'utf8',
 );

@@ -1,6 +1,5 @@
 <?php
 
-
 abstract class Controlador_Plantilla extends Controlador
 {
 	public $plantilla = 'plantilla';
