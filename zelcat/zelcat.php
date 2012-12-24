@@ -24,7 +24,8 @@ require directori('sys').'nucli.php';
 */
 
 error_reporting(-1);
-$resposta = Resposta::fer();
+$peticio = new Peticio;
+$resposta = Resposta::fer($peticio->peticio);
 
 $resposta->enviar();
 

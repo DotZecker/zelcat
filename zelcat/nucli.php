@@ -22,6 +22,9 @@ require directori('sys').'controlador.php';
 
 require directori('sys').'resposta.php';
 
+$ruta;
+require directori('app').'rutes.php';
+
 /*
 |--------------------------------------------------------------------------
 | Afegim alias
@@ -32,3 +35,4 @@ require directori('sys').'resposta.php';
 */
 class_alias('BaseDeDades', 'BD');
 class_alias('Configuracio', 'Config');
+

@@ -11,11 +11,13 @@
 </head>
 <body>
 
-	<div class="header-container">
-        <header class="wrapper clearfix">
-            Universi.ta!
-        </header>
-    </div>
+	<header class="header-container">
+        <ul class="wrapper clearfix">
+            <li><a href="#">Izquierda</a></li>
+            <li class="logo"><img src="/bens/img/logo.png" alt=""></li>
+            <li><a href="#">Derecha</a></li>
+        </ul>
+    </header>
 
     <div role="main" class="inici">
         <div class="wrapper clearfix">

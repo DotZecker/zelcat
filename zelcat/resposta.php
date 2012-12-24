@@ -4,14 +4,22 @@ class Resposta {
 
     protected $vista;
 
-    public function __construct()
+    public function __construct($ruta)
     {
-        $peticio = new Peticio();
+        if ($ruta == '') $ruta = '/';
 
-        // TODO: Quitar y arreglar esta cutrada
-        $controlador = (isset($peticio->controlador[0])) ? $peticio->controlador[0] : Config::de('aplicacio', 'controlador_per_defecte');
+        // Mirem si està registrada la ruta
+        // Si hi ha post serà per post, ja que prima
+        $metode = ($_POST) ? 'post' : 'get';
 
-        $accio = (is_null($peticio->accio)) ? 'index' : $peticio->accio;
+        if ($controlador_accio = Ruta::existeix($ruta, $metode))
+        {
+            $controlador = $controlador_accio['controlador'];
+            $accio       = $controlador_accio['accio'];
+        } else {
+            header("HTTP/1.0 404 Not Found");
+            die('404');
+        }
 
         // TODO: Añadir otras variables de la url (para pasarlas como parámetro a las acciones)
         $directori_controlador = directori('app').'controladors/'.$controlador.'.php';
@@ -20,7 +28,7 @@ class Resposta {
             require $directori_controlador;
         } else {
             header("HTTP/1.0 404 Not Found");
-            die('404');
+            die('404 - CONTROLADOR INEXISTENT');
         }
 
         $name_controller = 'Controlador_' . ucfirst($controlador);
@@ -34,11 +42,12 @@ class Resposta {
             header("HTTP/1.0 404 Not Found");
             die('404');
         }
+
     }
 
-    public static function fer()
+    public static function fer($ruta = '/')
     {
-        return new static();
+        return new static($ruta);
     }
 
     protected function preparar($que)

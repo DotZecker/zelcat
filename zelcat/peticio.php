@@ -10,7 +10,7 @@ class Peticio {
     public function __construct()
     {
         // Obtenim la petició actual
-        $this->peticio = $_SERVER['REQUEST_URI'];
+        $this->peticio = implode('/', array_filter(explode('/', $_SERVER['REQUEST_URI'])));
 
         $this->parametres = array();
 

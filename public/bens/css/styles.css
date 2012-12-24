@@ -74,10 +74,39 @@ body {
    =================== */
 
 .header-container {
-    height: 3em;
+    height: auto;
     line-height: 3em;
-    color: #fafafa;
+    color: #303030;
     position: relative;
+    text-align: center;
+    border-top: 6px solid #b0484a;
+}
+
+.header-container a {
+    color: #4D4C4C;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: .8em;
+}
+
+.header-container a:hover {
+    color: #b0484a;
+}
+
+.header-container ul {
+
+}
+
+.header-container ul li {
+    display: inline-block;
+}
+
+.header-container ul li.logo {
+    padding: .5em 2em;
+}
+
+.header-container ul li.logo img {
+    height: 5em;
 }
 
 .footer-container,
@@ -88,11 +117,7 @@ body {
 .header-container,
 .footer-container,
 [role="main"] aside {
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(#494949), to(#0e0e0e));
-    background: -webkit-linear-gradient(#494949 0%, #0e0e0e 100%);
-    background: -moz-linear-gradient(#494949 0%, #0e0e0e 100%);
-    background: -o-linear-gradient(#494949 0%, #0e0e0e 100%);
-    background: linear-gradient(#494949 0%, #0e0e0e 100%);
+    background: #fff;
 }
 
 .title {
