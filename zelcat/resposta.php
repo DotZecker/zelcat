@@ -16,6 +16,7 @@ class Resposta {
         {
             $controlador = $controlador_accio['controlador'];
             $accio       = $controlador_accio['accio'];
+
         } else {
             header("HTTP/1.0 404 Not Found");
             die('404');
@@ -26,6 +27,9 @@ class Resposta {
 
         if (file_exists($directori_controlador)) {
             require $directori_controlador;
+        } elseif (is_callable($accio)) {
+            $accio();
+            die('S\'ha executat una funció com a paràmetre');
         } else {
             header("HTTP/1.0 404 Not Found");
             die('404 - CONTROLADOR INEXISTENT');
@@ -48,35 +52,6 @@ class Resposta {
     public static function fer($ruta = '/')
     {
         return new static($ruta);
-    }
-
-    protected function preparar($que)
-    {
-        /*$contingut_final = array();
-        foreach ($que as $nom_variable => $contingut)
-        {
-            if ($contingut instanceof Vista)
-            {
-                $contingut_final[$nom_variable] = $this->preparar($contingut);
-            } else {
-                if ($que instanceof Vista and $nom_variable == 'directori')
-                {
-                    pd($que);
-                    ob_start() ;
-
-                        extract($que->dades);
-                        require $contingut;
-                        $contingut_final[$nom_variable] = ob_get_contents();
-                    ob_end_clean();
-
-                } else {
-                    $contingut_final[$nom_variable] = $contingut;
-                }
-            }
-
-        }
-
-        return $contingut_final;*/
     }
 
     public function enviar()

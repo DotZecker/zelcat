@@ -21,6 +21,8 @@ require directori('sys').'model.php';
 require directori('sys').'controlador.php';
 
 require directori('sys').'resposta.php';
+require directori('sys').'uri.php';
+require directori('sys').'redirigir.php';
 
 $ruta;
 require directori('app').'rutes.php';
