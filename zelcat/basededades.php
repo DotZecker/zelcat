@@ -3,7 +3,7 @@
 class BaseDeDades {
 
 	public $configuracio;
-    protected $db;
+    protected $pdo;
 
 	public function __construct()
 	{
@@ -11,15 +11,24 @@ class BaseDeDades {
 		$this->configuracio = $config;
 
         // Connectem
-        $this->db = new PDO("{$config['driver']}:host={$config['host']};dbname={$config['basededades']};charset={$config['charset']}", $config['usuari'], $config['contrasenya']);
+        $this->pdo = new PDO("{$config['driver']}:host={$config['host']};dbname={$config['basededades']};charset={$config['charset']}", $config['usuari'], $config['contrasenya']);
 	}
 
     public static function cru($consulta)
     {
         $connexio = new static();
         // TODO: Control de errores
-        return $connexio->db->query($consulta)->fetchAll(PDO::FETCH_ASSOC);
+        $consulta = $connexio->pdo->query($consulta);
 
+        return ($consulta)
+               ? $consulta->fetchAll(PDO::FETCH_ASSOC)
+               : array();
+
+    }
+
+    public function __destruct()
+    {
+        $this->pdo = null;
     }
 
 

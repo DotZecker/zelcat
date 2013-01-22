@@ -32,7 +32,7 @@ class Peticio {
 
         $controlador = array_values($peticio_actual);
 
-        // TODO: Comrpovar que en la $peticio_actual no hi ha cap caracter extrany
+        // @todo: Comrpovar que en la $peticio_actual no hi ha cap caracter extrany
         $this->controlador = $controlador;
 
         // Mirem si ens han passat paràmetres

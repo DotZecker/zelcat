@@ -6,12 +6,12 @@
     <title><?= $titol ?></title>
     <?= Bens::js('vendor/modernizr-2.6.2-respond-1.1.0.min') ?>
 
-	<?= Bens::css('normalize.min') ?>
+    <?= Bens::css('normalize.min') ?>
     <?= Bens::css('styles') ?>
 </head>
 <body>
 
-	<header class="header-container">
+    <header class="header-container">
         <ul class="wrapper clearfix">
             <li><a href="#">Izquierda</a></li>
             <li class="logo"><img src="/bens/img/logo.png" alt=""></li>

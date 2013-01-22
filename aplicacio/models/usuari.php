@@ -10,7 +10,7 @@ class Usuari {
     public static function get($identifier = null)
     {
         $sql = "SELECT * FROM usuaris";
-        if ( ! is_null($identifier)) {
+        if (! is_null($identifier)) {
             $sql .= (is_numeric($identifier)) ? " WHERE id = {$identifier}" : " WHERE email = \"{$identifier}\"";
         }
 

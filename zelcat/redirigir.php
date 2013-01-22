@@ -14,4 +14,9 @@ class Redirigir {
                ? static::a(URI::url_base() . $ruta)
                : false;
     }
+
+    public static function enrere()
+    {
+        return Redirigir::a($_SERVER['HTTP_REFERER']);
+    }
 }

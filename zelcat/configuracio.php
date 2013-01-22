@@ -9,8 +9,10 @@ class Configuracio {
      */
 	public static function de($que, $clau = null)
 	{
-        $configuracio = require directori('app').'config\\'.$que.'.php';
-        return (is_null($clau)) ? $configuracio : $configuracio[$clau];
+        $configuracio = require directori('app') . 'config' . DS . $que . '.php';
 
+        return (is_null($clau))
+               ? $configuracio
+               : $configuracio[$clau];
 	}
 }

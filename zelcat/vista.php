@@ -13,7 +13,7 @@ class Vista {
 
 		$dades_a_extraure = array();
 		foreach ($this->dades as $nom_varaible => $contingut) {
-			if ( ! $this->comprovar_si_fill_es_una_vista($contingut)) {
+			if (! $this->comprovar_si_fill_es_una_vista($contingut)) {
 				//echo " no es instancia <br>";
 				$dades_a_extraure[$nom_varaible] = $contingut;
 			} else {
@@ -46,7 +46,7 @@ class Vista {
 
 		$dades_a_extraure = array();
 		foreach ($this->dades as $nom_varaible => $contingut) {
-			if ( ! $this->comprovar_si_fill_es_una_vista($contingut)) {
+			if (! $this->comprovar_si_fill_es_una_vista($contingut)) {
 				//echo " no es instancia <br>";
 				$dades_a_extraure[$nom_varaible] = $contingut;
 			} else {
