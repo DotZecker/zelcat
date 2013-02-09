@@ -4,6 +4,12 @@ class Ruta {
 
     public $rutes;
 
+    /**
+     * Instanciem la ruta
+     * @param [type] $metode    [description]
+     * @param [type] $uri       [description]
+     * @param [type] $variables [description]
+     */
     public function __construct($metode, $uri, $variables)
     {
         $controlador = '';

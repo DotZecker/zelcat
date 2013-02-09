@@ -4,6 +4,10 @@ class Resposta {
 
     protected $vista;
 
+    /**
+     * Instanciem la resposta
+     * @param String $ruta
+     */
     public function __construct($ruta)
     {
         if ($ruta == '') $ruta = '/';

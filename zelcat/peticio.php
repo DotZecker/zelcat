@@ -7,6 +7,9 @@ class Peticio {
     public $accio;
     public $parametres;
 
+    /**
+     * Instanciem la petició
+     */
     public function __construct()
     {
         // Obtenim la petició actual

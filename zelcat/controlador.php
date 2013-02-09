@@ -1,7 +1,10 @@
 <?php
 
-class Controlador {
+abstract class Controlador {
 
+    /**
+     * S'executa abans de qualsevol cosa
+     */
     public function abans()
     {
 

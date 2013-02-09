@@ -9,13 +9,13 @@
  */
 function pd($array)
 {
-	echo "<code>";
-		echo "<pre>";
-			print_r($array);
-		echo "</pre>";
-	echo "</code>";
+    echo "<code>";
+        echo "<pre>";
+            print_r($array);
+        echo "</pre>";
+    echo "</code>";
 
-	die();
+    die();
 }
 
 /**

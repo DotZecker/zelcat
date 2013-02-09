@@ -1,13 +1,8 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Afegim les clases del nucli
-|--------------------------------------------------------------------------
-|
-| Es carregan les clases que es fan servir per a cada petició i configuració
-|
-*/
+/**********************************************
+ * Afegim les clases al nucli                 *
+ **********************************************/
 session_start();
 require directori('sys').'configuracio.php';
 require directori('sys').'ajudants.php';
@@ -27,13 +22,9 @@ require directori('sys').'redirigir.php';
 
 require directori('app').'rutes.php';
 
-/*
-|--------------------------------------------------------------------------
-| Afegim alias
-|--------------------------------------------------------------------------
-|
-| Per accedir més rapidament a algunes clases
-|
-*/
+
+/**********************************************
+ * Afegim els alias                           *
+ **********************************************/
 class_alias('BaseDeDades', 'BD');
 class_alias('Configuracio', 'Config');

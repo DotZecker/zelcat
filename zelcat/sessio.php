@@ -28,7 +28,7 @@ class Sessio
         return true;
     }
 
-    //@todo: Que no et crei tot el array
+    // @todo: Que no et crei tot el array
     public static function destruir($que)
     {
         $que = explode('.', $que);
