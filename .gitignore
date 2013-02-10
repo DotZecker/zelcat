@@ -11,7 +11,8 @@ aplicacio/controladors/*
 aplicacio/models/*
 aplicacio/vistes/*
 aplicacio/rutes.php
-public/bens/*
+aplicacio/sql
+public/*
 
 
 nbproject/

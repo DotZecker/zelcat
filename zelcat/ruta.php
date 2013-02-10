@@ -61,6 +61,8 @@ class Ruta {
 
     public static function existeix($ruta, $metode)
     {
+        $ruta = explode('?', $ruta);
+        $ruta = $ruta[0];
         // @TODO: Trure aquesta CUTRADA! I fer-ho passant per referenicia el valor
         return isset($GLOBALS['ruta'][$metode][$ruta])
                ? $GLOBALS['ruta'][$metode][$ruta]
