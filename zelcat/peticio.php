@@ -54,7 +54,7 @@ class Peticio {
             $this->accio = $accio;
         }
 
-        return $this;
+        return $this
     }
 
 }
