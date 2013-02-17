@@ -54,19 +54,39 @@ class Ruta {
         new static($metode, $uri, $variables);
     }
 
+    public static function existeix($ruta, $metode)
+    {
+
+        $ruta = explode('?', $ruta);
+        $ruta = $ruta[0];
+
+        // Si la ruta existeix la retornem
+        if (isset($GLOBALS['ruta'][$metode][$ruta])) return $GLOBALS['ruta'][$metode][$ruta];
+
+        // Si la ruta no existeix pot ser perquè ens han passat paràmetres, així que ho comprovem
+        return static::coincideixFormatambVariables($ruta, $GLOBALS['ruta']['metode']);
+    }
+
+
+    public static function coincideixFormatambVariables($posibleCoincidencia, $rutes)
+    {
+        foreach ($rutes as $ruta);
+
+    }
+
+    public static function get($uri, $variables)
+    {
+        new static('get', $uri, $variables);
+    }
+
+    public static function post($uri, $variables)
+    {
+        new static('post', $uri, $variables);
+    }
+
     public static function qualsevol($uri, $variables)
     {
         new static(array('get', 'post'), $uri, $variables);
-    }
-
-    public static function existeix($ruta, $metode)
-    {
-        $ruta = explode('?', $ruta);
-        $ruta = $ruta[0];
-        // @TODO: Trure aquesta CUTRADA! I fer-ho passant per referenicia el valor
-        return isset($GLOBALS['ruta'][$metode][$ruta])
-               ? $GLOBALS['ruta'][$metode][$ruta]
-               : false;
     }
 
     /**
@@ -84,21 +104,6 @@ class Ruta {
 
         return false;
 
-    }
-
-    public static function extraure()
-    {
-
-    }
-
-    public static function get($uri, $variables)
-    {
-        new static('get', $uri, $variables);
-    }
-
-    public static function post($uri, $variables)
-    {
-        new static('post', $uri, $variables);
     }
 
 }

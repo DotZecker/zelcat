@@ -16,17 +16,17 @@ class Resposta {
         // Si hi ha post serà per post, ja que prima
         $metode = ($_POST) ? 'post' : 'get';
 
-        if ($controlador_accio = Ruta::existeix($ruta, $metode))
+        if ($controlador_accio_parametres = Ruta::existeix($ruta, $metode))
         {
-            $controlador = $controlador_accio['controlador'];
-            $accio       = $controlador_accio['accio'];
+            $controlador = $controlador_accio_parametres['controlador'];
+            $accio       = $controlador_accio_parametres['accio'];
+            $parametres  = $controlador_accio_parametres['parametres'];
 
         } else {
             header("HTTP/1.0 404 Not Found");
             die('404');
         }
 
-        // TODO: Añadir otras variables de la url (para pasarlas como parámetro a las acciones)
         $directori_controlador = directori('app').'controladors/'.$controlador.'.php';
 
         if (file_exists($directori_controlador)) {
