@@ -20,7 +20,9 @@ class Resposta {
         {
             $controlador = $controlador_accio_parametres['controlador'];
             $accio       = $controlador_accio_parametres['accio'];
-            $parametres  = $controlador_accio_parametres['parametres'];
+            $parametres  = ($controlador_accio_parametres['parametres'])
+                         ? $controlador_accio_parametres['parametres']
+                         : array();
 
         } else {
             header("HTTP/1.0 404 Not Found");
@@ -45,7 +47,7 @@ class Resposta {
         $action = 'accio_'.$accio;
 
         if (method_exists($controller, $action)) {
-            $this->vista = $controller->$action();
+            $this->vista = call_user_func_array(array($controller, $action), $parametres);
         } else {
             header("HTTP/1.0 404 Not Found");
             die('404');

@@ -64,13 +64,54 @@ class Ruta {
         if (isset($GLOBALS['ruta'][$metode][$ruta])) return $GLOBALS['ruta'][$metode][$ruta];
 
         // Si la ruta no existeix pot ser perquè ens han passat paràmetres, així que ho comprovem
-        return static::coincideixFormatambVariables($ruta, $GLOBALS['ruta']['metode']);
+        foreach ($GLOBALS['ruta'][$metode] as $rutaACoincidir => $valorsRuta) {
+            if (static::coincideixFormatambVariables($ruta, $rutaACoincidir) != false) {
+
+                $rutaARetornar = array('parametres' => static::coincideixFormatambVariables($ruta, $rutaACoincidir));
+                return array_merge($rutaARetornar, $valorsRuta);
+            }
+        }
+
+        return false;
+
     }
 
 
-    public static function coincideixFormatambVariables($posibleCoincidencia, $rutes)
+    public static function coincideixFormatambVariables($posibleCoincidencia, $ruta)
     {
-        foreach ($rutes as $ruta);
+        $variablesDeLaRuta = array();
+        // Separem la ruta per '/'
+        $posibleCoincidencia = array_filter(explode('/', $posibleCoincidencia));
+
+        // Analitzem les rutes per veure si coincideix el format
+        $ruta = array_filter(explode('/', $ruta));
+        $coincideix = true;
+
+        // Si tenen el mateix nombre de paràmetres es candidat a tenir el mateix format
+        if (count($posibleCoincidencia) == count($ruta)) {
+            for ($i = 0; $i < count($posibleCoincidencia); $i++) {
+
+                if ($ruta[$i] != $posibleCoincidencia[$i]) {
+
+                    // Mirem si la posible coincidencia té un format de variable
+                    if ((strpos($ruta[$i], '{') !== false) and (strpos($ruta[$i], '}') !== false)) {
+                        $variablesDeLaRuta[] = $posibleCoincidencia[$i];
+                    } else {
+
+                        // Els formats no coincideixen y no es una variable
+                        return false;
+                    }
+
+                }
+
+            }
+
+        } else {
+            return false;
+        }
+
+
+        return $variablesDeLaRuta;
 
     }
 
