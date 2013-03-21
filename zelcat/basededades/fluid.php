@@ -201,4 +201,15 @@ class Fluid
         return $this->primer()[$que];
     }
 
+
+    /**
+     * Retorna tots els resultats
+     * @param  Array $que Selects
+     * @return Array      Resultat d'executar la consulta
+     */
+    public function tots($que = null)
+    {
+        return $this->obtenir($que);
+    }
+
 }
