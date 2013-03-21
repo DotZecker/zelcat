@@ -173,6 +173,7 @@ class Fluid
         // LIMIT
         if (! is_null($this->limit)) $this->consulta .= "LIMIT {$this->limit}";
 
+
         return BD::cru($this->consulta);
     }
 
@@ -214,7 +215,7 @@ class Fluid
 
 
     /**
-     * Métode magin que fa magia amb la consulta
+     * Métode magic que fa magia amb la consulta
      * EXEMPLE DEL QUE ENS PODEN PASSAR:
      *     * ->on_comunitatautonoma_id_i_abreviatura(1, 'UMA');
      *
