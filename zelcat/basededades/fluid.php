@@ -27,7 +27,7 @@ class Fluid
 
 
     /**
-     * Crita al objecte
+     * Crida al objecte
      * @param  String $nomTaula
      * @param  array  $selects
      * @return Fluid
