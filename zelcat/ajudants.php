@@ -35,3 +35,7 @@ function dd($array)
 
     die();
 }
+
+function __($text){
+    return $text;
+}

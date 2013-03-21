@@ -20,7 +20,7 @@ class Resposta {
         {
             $controlador = $controlador_accio_parametres['controlador'];
             $accio       = $controlador_accio_parametres['accio'];
-            $parametres  = ($controlador_accio_parametres['parametres'])
+            $parametres  = (isset($controlador_accio_parametres['parametres']))
                          ? $controlador_accio_parametres['parametres']
                          : array();
 

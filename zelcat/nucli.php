@@ -1,9 +1,8 @@
-<?php
+<?php session_start();
 
 /**********************************************
  * Afegim les clases al nucli                 *
  **********************************************/
-session_start();
 require directori('sys') . 'configuracio.php';
 require directori('sys') . 'ajudants.php';
 require directori('sys') . 'autocarregador.php';
@@ -13,6 +12,7 @@ require directori('sys') . 'peticio.php';
 require directori('sys') . 'ruta.php';
 require directori('sys') . 'vista.php';
 require directori('sys') . 'basededades.php';
+require directori('sys') . 'basededades' . DS . 'fluid.php';
 require directori('sys') . 'model.php';
 require directori('sys') . 'controlador.php';
 

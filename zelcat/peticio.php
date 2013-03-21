@@ -25,8 +25,7 @@ class Peticio {
         // Mirem la acció, que es el últim valor de la petició i l'eliminem de tal
         // A no ser que el count sigui tan sols de 1 ja que si ho es és el nom del
         // controaldor per defecte
-        if (count($peticio_actual) > 1)
-        {
+        if (count($peticio_actual) > 1) {
             $accio = end($peticio_actual);
             unset($peticio_actual[count($peticio_actual)]);
         } else {

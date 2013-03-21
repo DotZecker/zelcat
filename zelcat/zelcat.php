@@ -10,7 +10,7 @@
 |
  */
 
-require directori('sys').'nucli.php';
+require directori('sys') . 'nucli.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +34,7 @@ function __autoload($nom_clase) {
 
     if (! strstr($nom_clase, '_'))
     {
-        if (file_exists($fitxer_model))
-        {
+        if (file_exists($fitxer_model)) {
             require $fitxer_model;
         } else {
             $fitxer_zelcat = directori('sys') . DS .$nom_clase . '.php';

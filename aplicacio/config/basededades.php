@@ -3,7 +3,7 @@
 return array(
     'driver'      => 'mysql',
     'host'        => 'localhost',
-    'basededades' => 'universita',
+    'basededades' => 'decampus',
     'usuari'      => 'root',
     'contrasenya' => 'root',
     'charset'     => 'utf8',
