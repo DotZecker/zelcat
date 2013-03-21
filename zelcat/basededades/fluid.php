@@ -212,4 +212,38 @@ class Fluid
         return $this->obtenir($que);
     }
 
+
+    /**
+     * Métode magin que fa magia amb la consulta
+     * EXEMPLE DEL QUE ENS PODEN PASSAR:
+     *     * ->on_comunitatautonoma_id_i_abreviatura(1, 'UMA');
+     *
+     * @param  String $metode
+     * @param  Array  $parametres
+     * @return Array  Resultat de la consulta
+     */
+    public function __call($metode, $parametres)
+    {
+        // Si comença amb on_
+        if (strpos($metode, 'on_') !== false) {
+
+            // Li treiem el on
+            $metode = substr($metode, 3);
+
+            $filtres = explode('_i_', $metode);
+
+            $count = 0;
+            foreach ($filtres as $filtre) {
+
+                $this->on($filtre, '=', $parametres[$count]);
+
+                $count++;
+            }
+
+            return $this;
+
+        }
+
+    }
+
 }

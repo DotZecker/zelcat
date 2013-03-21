@@ -8,5 +8,6 @@ Ruta::qualsevol('cerca', array('com' => 'cerca', 'usa' => 'cercador@index'));
 Ruta::qualsevol('graus/{id}', array('com' => 'cerca', 'usa' => 'grau@detall'));
 
 Ruta::qualsevol('test', function(){
-    pd(BD::taula('universitats')->tots());
+
+    pd(BD::taula('universitats')->on_comunitatautonoma_id_i_abreviatura(1, 'UMA')->primer());
 });
