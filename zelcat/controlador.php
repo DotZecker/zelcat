@@ -3,7 +3,7 @@
 abstract class Controlador {
 
     /**
-     * S'executa abans de qualsevol cosa
+     * S'executa abans que qualsevol cosa
      */
     public function abans()
     {

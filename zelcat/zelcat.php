@@ -28,25 +28,31 @@ $resposta = Resposta::fer($peticio->peticio);
 
 $resposta->enviar();
 
-function __autoload($nom_clase) {
+function __autoload($nomClase) {
 
-    $fitxer_model = directori('app') . 'models' . DS . $nom_clase . '.php';
 
-    if (! strstr($nom_clase, '_'))
-    {
-        if (file_exists($fitxer_model)) {
-            require $fitxer_model;
-        } else {
-            $fitxer_zelcat = directori('sys') . DS .$nom_clase . '.php';
-            if (file_exists($fitxer_zelcat)) require $fitxer_zelcat;
-        }
+    if (strstr($nomClase, 'Controlador')) {
+
+        $nomControlador    = str_replace('controlador', '', strtolower($nomClase));
+
+        $fitxerControlador = directori('app') . 'controladors' . DS .  $nomControlador . '.php';
+        if (file_exists($fitxerControlador)) require $fitxerControlador; // @todo: else
+
+
     } else {
 
-        $clase = directori('sys');
+        // Ruta del model a incloure
+        $fitxerModel = directori('app') . 'models' . DS . $nomClase . '.php';
 
-        $clase .= strtolower(str_replace('_', DS, $nom_clase)) . '.php';
+        if (file_exists($fitxerModel)) {
+            require $fitxerModel;
+        } else {
+            // És un fitxer del nucli
+            $fitxerZelcat = directori('sys') . DS . $nomClase . '.php';
+            if (file_exists($fitxerZelcat)) require $fitxerZelcat;
+        }
 
-        if (file_exists($clase)) require $clase; // @todo: else
+
     }
 
 

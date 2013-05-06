@@ -43,8 +43,8 @@ function dd($array)
  * @param  String  $on
  * @return String  Text amb cometes
  */
-function afegirCometes($on) {
-
+function afegirCometes($on)
+{
     return '"' . $on .'"';
 }
 
@@ -55,7 +55,8 @@ function afegirCometes($on) {
  * @param  String $on        On t'ho fa
  * @return String
  */
-function primerValor($separador, $on) {
+function primerValor($separador, $on)
+{
     return explode(' ', $on)[0];
 }
 
@@ -65,6 +66,13 @@ function primerValor($separador, $on) {
  * @param  String $text Text a traduir
  * @return String       Text traduit
  */
-function __($text){
+function __($text)
+{
     return $text;
+}
+
+
+function conteMajuscula($text)
+{
+    return preg_match('/[A-Z]+/', $text);
 }

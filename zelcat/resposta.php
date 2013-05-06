@@ -16,8 +16,8 @@ class Resposta {
         // Si hi ha post serà per post, ja que prima
         $metode = ($_POST) ? 'post' : 'get';
 
-        if ($controlador_accio_parametres = Ruta::existeix($ruta, $metode))
-        {
+        if ($controlador_accio_parametres = Ruta::existeix($ruta, $metode)) {
+
             $controlador = $controlador_accio_parametres['controlador'];
             $accio       = $controlador_accio_parametres['accio'];
             $parametres  = (isset($controlador_accio_parametres['parametres']))
@@ -29,7 +29,8 @@ class Resposta {
             die('404');
         }
 
-        $directori_controlador = directori('app').'controladors/'.$controlador.'.php';
+        // todo: Si el controlador es camelCase transformar la ruta a camel-case
+        $directori_controlador = directori('app') . 'controladors/' . $controlador . '.php';
 
         if (file_exists($directori_controlador)) {
             require $directori_controlador;
@@ -41,10 +42,10 @@ class Resposta {
             die('404 - CONTROLADOR INEXISTENT');
         }
 
-        $name_controller = 'Controlador_' . ucfirst($controlador);
+        $name_controller = 'Controlador' . ucfirst($controlador);
         $controller = new $name_controller;
         $controller->abans();
-        $action = 'accio_'.$accio;
+        $action = $metode . ucfirst($accio);
 
         if (method_exists($controller, $action)) {
             $this->vista = call_user_func_array(array($controller, $action), $parametres);
