@@ -76,3 +76,9 @@ function conteMajuscula($text)
 {
     return preg_match('/[A-Z]+/', $text);
 }
+
+function dieJSON($array)
+{
+    header('content-type: application/json; charset=utf-8');
+    die(json_encode($array));
+}
