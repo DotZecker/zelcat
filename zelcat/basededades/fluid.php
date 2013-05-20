@@ -104,6 +104,21 @@ class Fluid
 
 
     /**
+     * Retorna els elements mostrats per pàgina
+     * @param  int $quants Nombre d'elements a mostrar per página
+     * @return Fluid
+     */
+    public function pagina($quants)
+    {
+        $paginaActual = (isset($_GET['pag']) and is_numeric($_GET['pag'])) ? $_GET['pag'] - 1  : 0;
+
+        $this->agafa(($paginaActual * $quants), $quants);
+
+        return $this;
+    }
+
+
+    /**
      * Fa un ORDER BY $que[0], $que[1], ... $metode
      * @param  $que
      * @param  $metode
@@ -173,6 +188,8 @@ class Fluid
         // LIMIT
         if (! is_null($this->limit)) $this->consulta .= "LIMIT {$this->limit}";
 
+
+        pd($this->consulta);
 
         return BD::cru($this->consulta);
     }

@@ -82,3 +82,27 @@ function dieJSON($array)
     header('content-type: application/json; charset=utf-8');
     die(json_encode($array));
 }
+
+function senseAccents($cadena)
+{
+    $originals  = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+    $modificats = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+
+    $cadena = utf8_decode($cadena);
+    $cadena = strtr($cadena, utf8_decode($originals), $modificats);
+
+    return utf8_encode($cadena);
+}
+
+function arrayUniqueValues($array)
+{
+    return array_values(array_unique($array));
+}
+
+function getTypeaheadTokens($string)
+{
+    $tokens = array_merge(explode(' ', $string), explode(' ', senseAccents($string)));
+    $tokens = arrayUniqueValues($tokens);
+
+    return $tokens;
+}
