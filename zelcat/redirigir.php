@@ -4,7 +4,7 @@ class Redirigir {
 
     /**
      * Ens redirigeix a la url que passem
-     * @param  String $on La ruta on es redirigirá
+     * @param  String $on La ruta on es redirigirà
      * @return header
      */
     public static function a($on)
