@@ -4,8 +4,8 @@
  *
  * @package  zelcat
  * @version  0.0.0.1
- * @author   Rafael Antonio <dotzecker@gmail.com>
- * @link     @dotzecker
+ * @author   Rafa Gómez Casas
+ * @link     http://rafa.im
  */
 
 // --------------------------------------------------------------
