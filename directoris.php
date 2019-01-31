@@ -6,7 +6,7 @@
 $directoris['app']    = 'aplicacio';
 
 // --------------------------------------------------------------
-// Directori on es està el nucli del framework
+// Directori on és el nucli del framework
 // --------------------------------------------------------------
 $directoris['sys']    = 'zelcat';
 
@@ -21,7 +21,7 @@ $directoris['public'] = 'public';
 // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
 // --------------------------------------------------------------
-// Ens possem al directori actual
+// Ens posem al directori actual
 // --------------------------------------------------------------
 chdir(__DIR__);
 
@@ -31,7 +31,7 @@ chdir(__DIR__);
 defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 
 // --------------------------------------------------------------
-// Definim el directorio base (que es on estem actualment)
+// Definim el directori base (que es on som actualment)
 // --------------------------------------------------------------
 $GLOBALS['zelcat_directoris']['base'] = __DIR__.DS;
 
@@ -45,7 +45,7 @@ foreach ($directoris as $nom => $directori) {
 }
 
 /**
- * Un helper que te devuelve el directori que le pasemos
+ * Un ajudant que et retorna el directori que li passis
  *
  * @param  string  $directori
  * @return string
